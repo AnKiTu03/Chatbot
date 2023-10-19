@@ -4,6 +4,6 @@ python-dotenv==1.0.0
 streamlit==1.18.1
 faiss-cpu==1.7.4
 altair<5
-tiktoken==0.0.1
+tiktoken==0.5.1
 openai==0.10.2
 
