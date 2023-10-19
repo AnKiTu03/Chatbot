@@ -47,7 +47,7 @@ def main():
             with get_openai_callback() as cb:
                 response = chain.run(input_documents=docs,
                                      question=user_question)
-                print(cb)
+                st.write(cb)
 
             st.write(response)
 
