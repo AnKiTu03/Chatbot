@@ -1,6 +1,5 @@
 # MultiPDF Chat App
 
-> You can find the tutorial for this project on [YouTube](https://youtu.be/dXxQ0LR-3Hg).
 
 ## Introduction
 ------------
@@ -27,14 +26,12 @@ The application follows these steps to provide responses to your questions:
 ----------------------------
 To install the MultiPDF Chat App, please follow these steps:
 
-1. Clone the repository to your local machine.
-
-2. Install the required dependencies by running the following command:
+1. Install the required dependencies by running the following command:
    ```
    pip install -r requirements.txt
    ```
 
-3. Obtain an API key from OpenAI and add it to the `.env` file in the project directory.
+2. Obtain an API key from OpenAI and add it to the `.env` file in the project directory.
 ```commandline
 OPENAI_API_KEY=your_secrit_api_key
 ```
@@ -55,11 +52,3 @@ To use the MultiPDF Chat App, follow these steps:
 4. Load multiple PDF documents into the app by following the provided instructions.
 
 5. Ask questions in natural language about the loaded PDFs using the chat interface.
-
-## Contributing
-------------
-This repository is intended for educational purposes and does not accept further contributions. It serves as supporting material for a YouTube tutorial that demonstrates how to build this project. Feel free to utilize and enhance the app based on your own requirements.
-
-## License
--------
-The MultiPDF Chat App is released under the [MIT License](https://opensource.org/licenses/MIT).
