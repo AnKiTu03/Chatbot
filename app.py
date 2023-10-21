@@ -8,18 +8,11 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
-from langchain.callbacks import get_openai_callback
-
-pdf_docs = 'corporate bank.pdf'
 
 
 def get_pdf_text(pdf_docs):
-    # upload file
-
-    # extract the text
-
-    pdf_reader = PdfReader(pdf_docs)
     text = ""
+    pdf_reader = PdfReader(pdf_docs)
     for page in pdf_reader.pages:
         text += page.extract_text()
     return text
@@ -44,15 +37,14 @@ def get_vectorstore(text_chunks):
 
 def get_conversation_chain(vectorstore):
     llm = ChatOpenAI()
+
     memory = ConversationBufferMemory(
-        memory_key='chat_history', return_messages=True,)
-    with get_openai_callback() as cb:
-        conversation_chain = ConversationalRetrievalChain.from_llm(
-            llm=llm,
-            retriever=vectorstore.as_retriever(),
-            memory=memory
-        )
-        print(cb)
+        memory_key='chat_history', return_messages=True)
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vectorstore.as_retriever(),
+        memory=memory
+    )
     return conversation_chain
 
 
@@ -70,8 +62,9 @@ def handle_userinput(user_question):
 
 
 def main():
+    pdf_docs = "corporate bank.pdf"
     load_dotenv()
-    st.set_page_config(page_title="Chat with PDFs",
+    st.set_page_config(page_title="Chat with multiple PDFs",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -84,23 +77,25 @@ def main():
     user_question = st.chat_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
-    user_question = ""
-
     with st.sidebar:
-        with st.spinner("Processing"):
-            # get pdf text
-            raw_text = get_pdf_text(pdf_docs)
+        st.write("Welcome to Kissan chatbot")
+        if st.button("Click to Start Chatting"):
 
-            # get the text chunks
-            text_chunks = get_text_chunks(raw_text)
+            with st.spinner("Processing"):
+                # get pdf text
+                raw_text = get_pdf_text(pdf_docs)
 
-            # create vector store
-            vectorstore = get_vectorstore(text_chunks)
+        # get the text chunks
+                text_chunks = get_text_chunks(raw_text)
 
-            # create conversation chain
-            st.session_state.conversation = get_conversation_chain(
-                vectorstore)
+        # create vector store
+                vectorstore = get_vectorstore(text_chunks)
+
+        # create conversation chain
+                st.session_state.conversation = get_conversation_chain(
+                    vectorstore)
 
 
 if __name__ == '__main__':
     main()
+
