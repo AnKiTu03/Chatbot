@@ -64,7 +64,7 @@ def handle_userinput(user_question):
 def main():
     pdf_docs = "corporate bank.pdf"
     load_dotenv()
-    st.set_page_config(page_title="Chat with multiple PDFs",
+    st.set_page_config(page_title="Farmers Chatbot",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -78,9 +78,8 @@ def main():
     if user_question:
         handle_userinput(user_question)
     with st.sidebar:
-        st.write("Welcome to Kissan chatbot")
+        st.write("Welcome to Farmers chatbot\n")
         if st.button("Click to Start Chatting"):
-
             with st.spinner("Processing"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
