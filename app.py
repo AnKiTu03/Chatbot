@@ -64,8 +64,7 @@ def handle_userinput(user_question):
 def main():
     pdf_docs = "corporate bank.pdf"
     load_dotenv()
-    st.set_page_config(page_title="Farmers Chatbot",
-                       page_icon=":books:")
+    st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
@@ -73,28 +72,24 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
-    user_question = st.chat_input("Ask a question about your documents:")
+    st.header("Farmers Schemes Assistant")
+    user_question = st.chat_input("Ask a question here")
     if user_question:
         handle_userinput(user_question)
-    with st.sidebar:
-        st.write("Welcome to Farmers chatbot\n")
-        if st.button("Click to Start Chatting"):
-            with st.spinner("Processing"):
-                # get pdf text
-                raw_text = get_pdf_text(pdf_docs)
+    if st.session_state.conversation is None:
+        with st.spinner("Processing"):
+            # get pdf text
+            raw_text = get_pdf_text(pdf_docs)
 
-        # get the text chunks
-                text_chunks = get_text_chunks(raw_text)
+            # get the text chunks
+            text_chunks = get_text_chunks(raw_text)
 
-        # create vector store
-                vectorstore = get_vectorstore(text_chunks)
+            # create vector store
+            vectorstore = get_vectorstore(text_chunks)
 
-        # create conversation chain
-                st.session_state.conversation = get_conversation_chain(
-                    vectorstore)
+            # create conversation chain
+            st.session_state.conversation = get_conversation_chain(vectorstore)
 
 
 if __name__ == '__main__':
     main()
-
