@@ -10,6 +10,23 @@ from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
 
 
+# Define a dictionary for English and Hindi translations
+language_translations = {
+    "english": {
+        "page_title": "Farmers Chatbot",
+        "header": "Farmers Schemes Assistant",
+        "ask_question_placeholder": "Ask a question",
+        "Text": "You can ask any question related to the schemes for farmers in India.",
+    },
+    "hindi": {
+        "page_title": "किसान चैटबॉट",
+        "header": "किसान योजना सहायक",
+        "ask_question_placeholder": "सवाल पूछें",
+        "Text": "आप भारत में किसानों के लिए योजनाओं से संबंधित कोई भी प्रश्न पूछ सकते हैं।",
+    }
+}
+
+
 def get_pdf_text(pdf_docs):
     text = ""
     pdf_reader = PdfReader(pdf_docs)
@@ -72,11 +89,21 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Farmers Schemes Assistant")
-    user_question = st.chat_input("Ask a question here")
+    # Add a toggle feature to switch between English and Hindi
+    use_english = st.toggle("Hindi", value=False)
+    selected_language = "hindi" if use_english else "english"
+
+    st.header(language_translations[selected_language]["header"])
+    st.divider()
+    st.subheader(language_translations[selected_language]["Text"])
+
+    user_question = st.chat_input(
+        language_translations[selected_language]["ask_question_placeholder"])
     if user_question:
         handle_userinput(user_question)
-    if st.session_state.conversation is None:
+
+    # Use st.spinner for processing, and process data automatically
+    if not st.session_state.conversation:
         with st.spinner("Processing"):
             # get pdf text
             raw_text = get_pdf_text(pdf_docs)
