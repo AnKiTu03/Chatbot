@@ -16,7 +16,7 @@ language_translations = {
         "page_title": "Carrer Break Guidance",
         "header": "Solution for all the Carrer Break realted queries",
         "ask_question_placeholder": "Ask a question",
-        "Text": "You can ask any question related to Carrer ",
+        "Text": "You can ask any question related to Carrer Break.",
     },
 }
 
@@ -73,7 +73,7 @@ def handle_userinput(user_question):
 
 
 def main():
-    pdf_docs = "corporate bank.pdf"
+    pdf_docs = "career-break (1).pdf"
     load_dotenv()
     st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
