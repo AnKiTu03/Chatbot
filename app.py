@@ -83,9 +83,9 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    # Add a toggle feature to switch between English and Hindi
-    use_english = st.toggle("Hindi", value=False)
-    selected_language = "hindi" if use_english else "english"
+
+
+    selected_language = "english"
 
     st.header(language_translations[selected_language]["header"])
     st.divider()
