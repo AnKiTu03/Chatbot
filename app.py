@@ -13,17 +13,11 @@ from htmlTemplates import css, bot_template, user_template
 # Define a dictionary for English and Hindi translations
 language_translations = {
     "english": {
-        "page_title": "Farmers Chatbot",
-        "header": "Farmers Schemes Assistant",
+        "page_title": "Carrer Break Guidance",
+        "header": "Solution for all the Carrer Break realted queries",
         "ask_question_placeholder": "Ask a question",
-        "Text": "You can ask any question related to the schemes for farmers in India.",
+        "Text": "You can ask any question related to Carrer ",
     },
-    "hindi": {
-        "page_title": "किसान चैटबॉट",
-        "header": "किसान योजना सहायक",
-        "ask_question_placeholder": "सवाल पूछें",
-        "Text": "आप भारत में किसानों के लिए योजनाओं से संबंधित कोई भी प्रश्न पूछ सकते हैं।",
-    }
 }
 
 
