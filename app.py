@@ -73,7 +73,7 @@ def handle_userinput(user_question):
 
 
 def main():
-    pdf_docs = "career-break (1).pdf"
+    pdf_docs = "Cleaned_Midlife_Career_Moves_QA (1).pdf"
     load_dotenv()
     st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
