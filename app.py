@@ -60,7 +60,7 @@ def get_conversation_chain(vectorstore):
 
 
 def handle_userinput(user_question):
-    response = st.session_state.conversation({'question': f"{user_question}. Answer in 50 words max."})
+    response = st.session_state.conversation({'question': f"{user_question}."})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
@@ -73,7 +73,7 @@ def handle_userinput(user_question):
 
 
 def main():
-    pdf_docs = "Cleaned_Midlife_Career_Moves_QA (1).pdf"
+    pdf_docs = "career-break (1).pdf"
     load_dotenv()
     st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
