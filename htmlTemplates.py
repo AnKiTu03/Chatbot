@@ -37,7 +37,7 @@ bot_template = '''
 user_template = '''
 <div class="chat-message user">
     <div class="avatar">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fman-emoji-unknown&psig=AOvVaw2WrNPAS3klvKCXjef-uGLV&ust=1706341944948000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCLiv3KLJ-oMDFQAAAAAdAAAAABAD">
+        <img src="https://emojiisland.com/cdn/shop/products/35_large.png?v=1571606117">
     </div>    
     <div class="message">{{MSG}}</div>
 </div>
