@@ -16,7 +16,7 @@ language_translations = {
         "page_title": "Carrer Break Guidance",
         "header": "Solution for all the Carrer Break realted queries",
         "ask_question_placeholder": "Ask a question",
-        "Text": "You can ask any question related to Carrer Break.",
+        "Text": "You can ask any question related to Carrer Break .",
     },
 }
 
@@ -60,7 +60,7 @@ def get_conversation_chain(vectorstore):
 
 
 def handle_userinput(user_question):
-    response = st.session_state.conversation({'question': user_question})
+    response = st.session_state.conversation({'question': f"{user_question}. Answer in 50 words max."})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
