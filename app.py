@@ -73,7 +73,9 @@ def handle_userinput(user_question):
 
 
 def main():
-    pdf_docs = "Cleaned_Midlife_Career_Moves_QA (1).pdf"
+    all_text = ""
+    pdf_docs = ["Cleaned_Midlife_Career_Moves_QA (1).pdf", 
+                "midlifecareermoves.pdf"]
     load_dotenv()
     st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
@@ -100,7 +102,10 @@ def main():
     if not st.session_state.conversation:
         with st.spinner("Processing"):
             # get pdf text
-            raw_text = get_pdf_text(pdf_docs)
+            for doc in pdf_docs:
+                # Get text from each PDF document
+                raw_text = get_pdf_text(doc)
+                all_text += raw_text + "\n"
 
             # get the text chunks
             text_chunks = get_text_chunks(raw_text)
