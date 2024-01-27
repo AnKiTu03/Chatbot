@@ -74,7 +74,7 @@ def handle_userinput(user_question):
 
 def main():
     all_text = ""
-    pdf_docs = ["Cleaned_Midlife_Career_Moves_QA (1).pdf", 
+    pdf_docs = ["career-break (1).pdf", 
                 "midlifecareermoves.pdf"]
     load_dotenv()
     st.set_page_config(page_title="Farmers Chatbot", page_icon=":books:")
